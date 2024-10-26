@@ -1,10 +1,10 @@
 <?php 
-include 'includes/header.php'; 
-// include '../backend/config.php';    
+include 'includes/Header.php';
+include '../backend/config.php';    
 ?>
 
 <h2>Daftar Beasiswa</h2>
-<form action="../backend/registrationProcess.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+<form action="../backend/RegistrationProcess.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
     <div class="form-group">
         <label for="nama">Nama:</label>
         <input type="text" class="form-control" id="nama" name="nama" required>
@@ -12,10 +12,12 @@ include 'includes/header.php';
     <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" class="form-control" id="email" name="email" required>
+        <small id="emailWarning" style="color: red; display: none;">Format email tidak valid!</small>
     </div>
     <div class="form-group">
         <label for="nomor_hp">Nomor HP:</label>
-        <input type="number" class="form-control" id="nomor_hp" name="nomor_hp" required pattern="\d*">
+        <input type="text" class="form-control" id="nomor_hp" name="nomor_hp" required>
+        <small id="phoneWarning" style="color: red; display: none;">Nomor HP harus terdiri dari 10-13 digit angka!</small>
     </div>
     <div class="form-group">
         <label for="semester">Semester:</label>
@@ -44,14 +46,17 @@ include 'includes/header.php';
 </form>
 
 <script>
-    const ipk =  Math.random() < 0.5 ? 3.4 : 2.9;
-    document.getElementById("ipk").value = ipk;
+    // Set nilai IPK dengan peluang 50/50
+    const ipk = Math.random() < 0.5 ? 3.4 : 2.9;
+    document.getElementById("ipk").value = ipk; // Set nilai IPK di field IPK
 
+    // Fungsi untuk mengaktifkan atau menonaktifkan elemen berdasarkan nilai IPK
     function enableFieldsBasedOnIPK() {
         const jenisBeasiswaField = document.getElementById("jenis_beasiswa");
         const berkasField = document.getElementById("berkas");
         const submitButton = document.getElementById("submit_button");
 
+        // Aktifkan atau nonaktifkan elemen berdasarkan nilai IPK
         if (ipk >= 3.0) {
             jenisBeasiswaField.disabled = false;
             berkasField.disabled = false;
@@ -67,19 +72,43 @@ include 'includes/header.php';
         }
     }
 
-    enableFieldsBasedOnIPK();
+    // Panggil fungsi saat halaman selesai dimuat
+    document.addEventListener("DOMContentLoaded", enableFieldsBasedOnIPK);
 
-    // Validasi form
+    // Fungsi validasi form (email dan nomor telepon)
     function validateForm() {
+        // Mendapatkan nilai input email dan nomor telepon
         const email = document.getElementById("email").value;
+        const nomor_hp = document.getElementById("nomor_hp").value;
+
+        // Regex untuk validasi email
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
+        const emailWarning = document.getElementById("emailWarning");
+
+        // Regex untuk validasi nomor telepon (10-13 digit)
+        const phonePattern = /^\d{10,13}$/;
+        const phoneWarning = document.getElementById("phoneWarning");
+
+        let isValid = true;
+
+        // Validasi email
         if (!emailPattern.test(email)) {
-            alert("Format email tidak valid.");
-            return false;
+            emailWarning.style.display = "inline";
+            isValid = false;
+        } else {
+            emailWarning.style.display = "none";
         }
-        return true;
+
+        // Validasi nomor telepon
+        if (!phonePattern.test(nomor_hp)) {
+            phoneWarning.style.display = "inline";
+            isValid = false;
+        } else {
+            phoneWarning.style.display = "none";
+        }
+
+        return isValid; // Menghentikan submit jika ada validasi yang gagal
     }
 </script>
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'includes/Footer.php'; ?>
