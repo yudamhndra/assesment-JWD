@@ -7,4 +7,4 @@
     <li>Beasiswa Non-Akademik - Syarat aktif dalam kegiatan ekstrakurikuler</li>
 </ul>
 
-<?php include 'footer.php'; ?>
+<?php include 'includes/footer.php'; ?>

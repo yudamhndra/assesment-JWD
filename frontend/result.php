@@ -36,4 +36,4 @@ $result = $connection->query("SELECT * FROM pendaftaran");
     </tbody>
 </table>
 
-<?php include 'footer.php'; ?>
+<?php include 'includes/footer.php'; ?>

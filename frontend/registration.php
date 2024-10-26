@@ -1,6 +1,6 @@
 <?php 
 include 'includes/header.php'; 
-include '../backend/config.php';    
+// include '../backend/config.php';    
 ?>
 
 <h2>Daftar Beasiswa</h2>
@@ -44,8 +44,7 @@ include '../backend/config.php';
 </form>
 
 <script>
-    // Set nilai IPK dengan peluang 50/50
-    const ipk = Math.random() < 0.5 ? 3.4 : 2.9;
+    const ipk =  Math.random() < 0.5 ? 3.4 : 2.9;
     document.getElementById("ipk").value = ipk;
 
     function enableFieldsBasedOnIPK() {
@@ -68,7 +67,6 @@ include '../backend/config.php';
         }
     }
 
-    // Panggil fungsi saat halaman dimuat
     enableFieldsBasedOnIPK();
 
     // Validasi form
@@ -84,4 +82,4 @@ include '../backend/config.php';
     }
 </script>
 
-<?php include 'footer.php'; ?>
+<?php include 'includes/footer.php'; ?>
