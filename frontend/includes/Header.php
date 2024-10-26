@@ -29,6 +29,6 @@
     </div>
 </nav>
 
-<!-- Container Tengah -->
+<!-- Middle Container -->
 <div class="container d-flex justify-content-center align-items-center mt-5" style="min-height: 70vh;">
     <div class="col-md-8">

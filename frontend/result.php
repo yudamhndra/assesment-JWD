@@ -2,7 +2,6 @@
 include 'includes/header.php';
 include '../backend/config.php';
 
-// Ambil semua data dari tabel pendaftaran
 $result = $connection->query("SELECT * FROM pendaftaran");
 ?>
 

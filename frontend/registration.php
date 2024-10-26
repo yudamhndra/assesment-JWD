@@ -46,17 +46,14 @@ include '../backend/config.php';
 </form>
 
 <script>
-    // Set nilai IPK dengan peluang 50/50
     const ipk = Math.random() < 0.5 ? 3.4 : 2.9;
-    document.getElementById("ipk").value = ipk; // Set nilai IPK di field IPK
+    document.getElementById("ipk").value = ipk;
 
-    // Fungsi untuk mengaktifkan atau menonaktifkan elemen berdasarkan nilai IPK
     function enableFieldsBasedOnIPK() {
         const jenisBeasiswaField = document.getElementById("jenis_beasiswa");
         const berkasField = document.getElementById("berkas");
         const submitButton = document.getElementById("submit_button");
 
-        // Aktifkan atau nonaktifkan elemen berdasarkan nilai IPK
         if (ipk >= 3.0) {
             jenisBeasiswaField.disabled = false;
             berkasField.disabled = false;
@@ -72,26 +69,20 @@ include '../backend/config.php';
         }
     }
 
-    // Panggil fungsi saat halaman selesai dimuat
     document.addEventListener("DOMContentLoaded", enableFieldsBasedOnIPK);
 
-    // Fungsi validasi form (email dan nomor telepon)
     function validateForm() {
-        // Mendapatkan nilai input email dan nomor telepon
         const email = document.getElementById("email").value;
         const nomor_hp = document.getElementById("nomor_hp").value;
 
-        // Regex untuk validasi email
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const emailWarning = document.getElementById("emailWarning");
 
-        // Regex untuk validasi nomor telepon (10-13 digit)
         const phonePattern = /^\d{10,13}$/;
         const phoneWarning = document.getElementById("phoneWarning");
 
         let isValid = true;
 
-        // Validasi email
         if (!emailPattern.test(email)) {
             emailWarning.style.display = "inline";
             isValid = false;
@@ -99,7 +90,6 @@ include '../backend/config.php';
             emailWarning.style.display = "none";
         }
 
-        // Validasi nomor telepon
         if (!phonePattern.test(nomor_hp)) {
             phoneWarning.style.display = "inline";
             isValid = false;
@@ -107,7 +97,7 @@ include '../backend/config.php';
             phoneWarning.style.display = "none";
         }
 
-        return isValid; // Menghentikan submit jika ada validasi yang gagal
+        return isValid;
     }
 </script>
 
