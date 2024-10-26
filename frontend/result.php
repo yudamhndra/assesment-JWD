@@ -1,8 +1,7 @@
 <?php
-include 'includes/header.php';
+include 'header.php';
 include '../backend/config.php';
 
-// Ambil semua data dari tabel pendaftaran
 $result = $connection->query("SELECT * FROM pendaftaran");
 ?>
 
@@ -29,11 +28,13 @@ $result = $connection->query("SELECT * FROM pendaftaran");
             <td><?php echo htmlspecialchars($row['semester']); ?></td>
             <td><?php echo htmlspecialchars($row['ipk']); ?></td>
             <td><?php echo htmlspecialchars($row['jenis_beasiswa']); ?></td>
-            <td><a href="<?php echo htmlspecialchars($row['berkas']); ?>" target="_blank">Lihat Berkas</a></td>
-            <td><?php echo htmlspecialchars($row['status_ajuan']); ?></td> <!-- Tampilkan status ajuan -->
+            <td>
+                <a href="<?php echo htmlspecialchars($row['berkas']); ?>" download>Download Berkas</a>
+            </td>
+            <td><?php echo htmlspecialchars($row['status_ajuan']); ?></td>
         </tr>
         <?php endwhile; ?>
     </tbody>
 </table>
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'footer.php'; ?>
