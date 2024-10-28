@@ -18,7 +18,7 @@
 
 ## Tentang Proyek
 
-Proyek ini adalah aplikasi web sederhana yang dibuat menggunakan **PHP Native** (tanpa framework) untuk aplikasi manajemen pendaftaran beasiswa atau sistem penjualan sederhana. Proyek ini dirancang untuk tugas, dan menggunakan PHP untuk backend, HTML, CSS, dan JavaScript untuk frontend.
+Proyek ini adalah aplikasi web sederhana yang dibuat menggunakan **PHP Native** (tanpa framework) untuk aplikasi manajemen pendaftaran beasiswa. Proyek ini dirancang untuk tugas asesi sertifikasi junior web developer, dan menggunakan PHP untuk backend, HTML, CSS, dan JavaScript untuk frontend.
 
 ## Fitur
 
